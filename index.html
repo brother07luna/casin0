@@ -1,69 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Acceso Casinos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background: #0f0f0f;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        .box {
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
-        }
-        h1 {
-            margin-bottom: 25px;
-        }
-        a {
-            display: block;
-            background: #6d04aa;
-            color: white;
-            padding: 50px;
-            margin: 20px 0;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        a:hover {
-            background: #420711;
-        }
-        .respaldo {
-            background: #e6d435;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Floky Casinos</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 0; /* Espacio extra arriba y abajo para que no quede pegado al deslizar en celu */
+    background-color: #000; /* Fondo negro de respaldo mientras carga el video */
+}
+
+/* ========= VIDEO DE FONDO ========= */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que el video cubra toda la pantalla sin deformarse */
+    z-index: 0;
+    pointer-events: none; /* Evita que el video interfiera con los clics en los botones */
+}
+
+/* Oscurece el fondo de manera fija para que no se corte al hacer scroll */
+body::before{
+    content:"";
+    position: fixed; /* Cambiado a fixed para que cubra toda la pantalla siempre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.box{
+    position: relative;
+    z-index: 2;
+    width: 90%; /* Un toque más chico en los bordes para mejor visualización móvil */
+    max-width: 450px;
+    text-align: center;
+}
+
+h1{
+    color:white;
+    font-size:42px;
+    margin-bottom:10px;
+    text-shadow:0 0 15px gold;
+}
+
+.sub{
+    color:#d9d9d9;
+    margin-bottom:35px;
+    font-size:16px;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 22px;
+    padding: 22px;
+    transition: 0.3s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari de iPhone */
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+a:hover{
+    transform: scale(1.03); /* Un poco menor el escalado para evitar tirones en el celu */
+    background: rgba(255,215,0,0.12);
+    border: 1px solid gold;
+    box-shadow: 0 0 25px rgba(255,215,0,0.5);
+}
+
+.icon{
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.titulo{
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.desc{
+    color: #d6d6d6;
+    font-size: 14px;
+}
+
+/* Cambios específicos para pantallas chicas */
+@media(max-width:600px){
+
+    h1{
+        font-size: 32px;
+    }
+
+    a{
+        padding: 18px;
+    }
+    
+    /* Evita el efecto zoom molesto al tocar los botones en algunos navegadores de celular */
+    a:active {
+        transform: scale(0.98);
+    }
+}
+
+</style>
 </head>
 <body>
-    <div class="box">
-        <h1>🎰 Acceso Casinos</h1>
 
-        <a href="https://wa.me/5491170824763"?text=hola%20quiero%20cargar%20mi%20nombre%20es:%20" target="_blank">
-            🎰 GANAMOS🍀🍀
+<video class="video-bg" autoplay loop muted playsinline>
+    <source src="img/fondito.mp4" type="video/mp4">
+</video>
+
+<div class="box">
+
+    <h1>🎰 FLOKY CASINOS</h1>
+    <p class="sub">Elegí un cajero y cargá tus fichas</p>
+
+    <div class="links">
+
+         
+
+       
+            <a href="https://wa.me/5491164013006?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
+            <div class="icon">🥇</div>
+            <div class="titulo">Celuapuestas I</div>
+            <div class="desc">24hs</div>
         </a>
 
-        <a href="https://wa.me/5491166471536"?text=hola%20quiero%20cargar%20mi%20nombre%20es:%20" target="_blank">
-            🎰 CELU APUESTAS I🍀🍀
+          <a href="https://wa.me/5491126590652?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+            <div class="icon">🔥</div>
+            <div class="titulo">Celuapuestas II</div>
+            <div class="desc">Sorteos y ruletas</div>
         </a>
-      <a href="https://wa.me/5491127782971"?text=hola%20quiero%20cargar%20mi%20nombre%20es:%20" target="_blank">
-            🎰 CELU APUESTAS II🍀🍀
+        <a href="https://wa.me/5493756598609?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+            <div class="icon">🔥</div>
+            <div class="titulo">Celuapuestas III</div>
+            <div class="desc">Sorteos y ruletas</div>
+        </a>
+        <a href="https://wa.me/93756598157?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+            <div class="icon">🔥</div>
+            <div class="titulo">Celuapuestas IV</div>
+            <div class="desc">Sorteos y ruletas</div>
         </a>
 
-        <a class="respaldo" href="https://wa.me/5491126631810?text=hola%20quiero%20cargar%20mi%20nombre%20es:%20" target="_blank">
-    👩 (cajera veronica)
-</a>
 
-<a class="respaldo" href="https://wa.me/5491126631823?text=hola%20quiero%20cargar%20mi%20nombre%20es:%20" target="_blank">
-    👨🏼 (cajero cristian)
-</a>
+
     </div>
+
+</div>
+
 </body>
 </html>
-
-
