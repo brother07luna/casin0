@@ -6,7 +6,6 @@
 <title>Floky Casinos</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -17,11 +16,12 @@
 body{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     position: relative;
-    padding: 20px 0; /* Espacio extra arriba y abajo para que no quede pegado al deslizar en celu */
-    background-color: #000; /* Fondo negro de respaldo mientras carga el video */
+    padding: 20px 0 40px 0;
+    background-color: #000;
 }
 
 /* ========= VIDEO DE FONDO ========= */
@@ -31,15 +31,14 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que el video cubra toda la pantalla sin deformarse */
+    object-fit: cover;
     z-index: 0;
-    pointer-events: none; /* Evita que el video interfiera con los clics en los botones */
+    pointer-events: none;
 }
 
-/* Oscurece el fondo de manera fija para que no se corte al hacer scroll */
 body::before{
     content:"";
-    position: fixed; /* Cambiado a fixed para que cubra toda la pantalla siempre */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -49,31 +48,107 @@ body::before{
     z-index: 1;
 }
 
+/* ========= CARTEL DE SORTEO DESTACADO ========= */
+.promo-banner {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 450px;
+    margin-bottom: 25px;
+    padding: 18px 15px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 69, 0, 0.25));
+    border: 2px solid #ffd700;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.2);
+    text-align: center;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+.promo-tag {
+    display: inline-block;
+    background: #ff0055;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 8px #ff0055;
+}
+
+.promo-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    text-shadow: 0 0 10px #ffd700;
+    margin-bottom: 5px;
+}
+
+.promo-monto {
+    color: #ffd700;
+    font-size: 28px;
+    font-weight: 900;
+    text-shadow: 0 0 15px #ff8c00;
+    letter-spacing: 1px;
+}
+
+.promo-details {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-around;
+    font-size: 13px;
+    color: #fff;
+}
+
+.promo-details span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.2);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 28px rgba(255, 215, 0, 0.7), inset 0 0 20px rgba(255, 215, 0, 0.4);
+        transform: scale(1.01);
+    }
+}
+
+/* ========= BOTONES Y CONTENIDO ========= */
 .box{
     position: relative;
     z-index: 2;
-    width: 90%; /* Un toque más chico en los bordes para mejor visualización móvil */
+    width: 90%;
     max-width: 450px;
     text-align: center;
 }
 
 h1{
     color:white;
-    font-size:42px;
-    margin-bottom:10px;
+    font-size:38px;
+    margin-bottom:8px;
     text-shadow:0 0 15px gold;
 }
 
 .sub{
     color:#d9d9d9;
-    margin-bottom:35px;
-    font-size:16px;
+    margin-bottom:25px;
+    font-size:15px;
 }
 
 .links{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
 }
 
 a{
@@ -82,52 +157,43 @@ a{
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 22px;
-    padding: 22px;
+    padding: 20px;
     transition: 0.3s;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px); /* Compatibilidad con Safari de iPhone */
+    -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 a:hover{
-    transform: scale(1.03); /* Un poco menor el escalado para evitar tirones en el celu */
+    transform: scale(1.03);
     background: rgba(255,215,0,0.12);
     border: 1px solid gold;
     box-shadow: 0 0 25px rgba(255,215,0,0.5);
 }
 
 .icon{
-    font-size: 38px;
-    margin-bottom: 10px;
+    font-size: 34px;
+    margin-bottom: 8px;
 }
 
 .titulo{
-    font-size: 22px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 
 .desc{
     color: #d6d6d6;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-/* Cambios específicos para pantallas chicas */
 @media(max-width:600px){
-
-    h1{
-        font-size: 32px;
-    }
-
-    a{
-        padding: 18px;
-    }
-    
-    /* Evita el efecto zoom molesto al tocar los botones en algunos navegadores de celular */
-    a:active {
-        transform: scale(0.98);
-    }
+    h1{ font-size: 30px; }
+    .promo-title { font-size: 20px; }
+    .promo-monto { font-size: 24px; }
+    .promo-details { font-size: 11px; }
+    a{ padding: 16px; }
+    a:active { transform: scale(0.98); }
 }
-
 </style>
 </head>
 <body>
@@ -136,42 +202,45 @@ a:hover{
     <source src="img/fondito.mp4" type="video/mp4">
 </video>
 
-<div class="box">
+<div class="promo-banner">
+    <span class="promo-tag">🔥 GRAN SORTEO 🔥</span>
+    <div class="promo-title">ESTAMOS SORTEANDO</div>
+    <div class="promo-monto">$9 MILLONES EN PREMIOS</div>
+    <div class="promo-details">
+        <span>⏰ Cierra: 4 Sept - 13:00 hs</span>
+        <span>🎰 Sortea: 20:00 hs</span>
+    </div>
+</div>
 
+<div class="box">
     <h1>🎰 FLOKY CASINOS</h1>
     <p class="sub">Elegí un cajero y cargá tus fichas</p>
 
     <div class="links">
-
-         
-            <a href="https://wa.me/93756598157?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+        <a href="https://wa.me/93756598157?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
             <div class="icon">🔥</div>
             <div class="titulo">Celuapuestas IV</div>
             <div class="desc">Sorteos y ruletas</div>
         </a>
-       
-            <a href="https://wa.me/5491164013006?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
+        
+        <a href="https://wa.me/5491164013006?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
             <div class="icon">🥇</div>
             <div class="titulo">Celuapuestas I</div>
             <div class="desc">24hs</div>
         </a>
 
-          <a href="https://wa.me/5491126590652?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+        <a href="https://wa.me/5491126590652?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
             <div class="icon">🔥</div>
             <div class="titulo">Celuapuestas II</div>
             <div class="desc">Sorteos y ruletas</div>
         </a>
-        <a href="https://wa.me/5493756598609?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="Link">
+
+        <a href="https://wa.me/5493756598609?text=holaa%20Floky%20quiero%20cargar%20vengo%20de%20instagram%20%20mi%20nombre%20es:%20" target="_blank">
             <div class="icon">🔥</div>
             <div class="titulo">Celuapuestas III</div>
             <div class="desc">Sorteos y ruletas</div>
         </a>
-        
-
-
-
     </div>
-
 </div>
 
 </body>
